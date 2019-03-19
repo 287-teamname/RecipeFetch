@@ -5,7 +5,6 @@
  * @version 3/6/19
  */
 
-import java.util.List;
 import java.util.ArrayList;
 import org.jsoup.nodes.*;
 import org.jsoup.select.*;
