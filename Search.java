@@ -25,6 +25,7 @@ public class Search
         }
         catch (IOException e) {
             System.out.println("error!");
+			return null;
         }   
     }
 }
