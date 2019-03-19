@@ -36,7 +36,7 @@ public class Recipe
     }
 	
 	public void printIngredients() {
-		for (i in ingredients) {
+		for (String i : ingredients) {
 			System.out.println(i);
 		}
 	}
@@ -45,7 +45,7 @@ public class Recipe
 		return name;
 	}
 	
-	public Arraylist<String> getIngredients() {
+	public ArrayList<String> getIngredients() {
 		return ingredients;
 	}
 }
