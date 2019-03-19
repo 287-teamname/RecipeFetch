@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class RecipeFetch
 {
-    public static void main() {
+    public static void main(String[] args) {
         recipeSearch("nachos");
     }
     
