@@ -2,7 +2,7 @@
  * Contains all scraped information for each Recipe
  *
  * @author Joshua Grebler
- * @version 3/6/19
+ * @version 3/20/19
  */
 
 import java.util.ArrayList;
