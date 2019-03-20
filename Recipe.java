@@ -35,16 +35,19 @@ public class Recipe
         } 
     }
 	
+	//prints the ingredients from the arraylist
 	public void printIngredients() {
 		for (String i : ingredients) {
 			System.out.println(i);
 		}
 	}
 	
+	//accessor method for the recipe name
 	public String getName() {
 		return name;
 	}
 	
+	//accessor method for the ingredients
 	public ArrayList<String> getIngredients() {
 		return ingredients;
 	}
