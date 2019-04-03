@@ -1,5 +1,3 @@
-package cis287;
-
 /**
  *
  * @author aemarrero
