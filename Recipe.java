@@ -51,4 +51,12 @@ public class Recipe
 	public ArrayList<String> getIngredients() {
 		return ingredients;
 	}
+	
+	public String getIngredientString() {
+		String s = "";
+		for (String i : getIngredients()) {
+			s += (i + "\n");
+		}
+		return s;
+	}
 }
