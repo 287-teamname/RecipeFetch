@@ -14,12 +14,11 @@ import javax.mail.internet.MimeMultipart;
 
 public class SendMail {
 
-	public static void main(String[] args) {
+	public static void send(String toEmail, String url) {
 		//authentication info
 		final String username = "yourUsername@email.com";
 		final String password = "password";
 		String fromEmail = "fromemail@yahoo.com";
-		String toEmail = "toEmail@example.com";
 		
 		Properties properties = new Properties();
 		properties.put("mail.smtp.auth", "true");
@@ -37,21 +36,18 @@ public class SendMail {
 		try {
 			msg.setFrom(new InternetAddress(fromEmail));
 			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
-			msg.setSubject("Subject Line");
+			msg.setSubject("Your Recipes from All recipes");
 			
 			Multipart emailContent = new MimeMultipart();
 			
 			//Text body part
 			MimeBodyPart textBodyPart = new MimeBodyPart();
-			textBodyPart.setText("My multipart text");
+			textBodyPart.setText(url);
 			
-			//Attachment body part.
-			MimeBodyPart pdfAttachment = new MimeBodyPart();
-			pdfAttachment.attachFile("/home/parallels/Documents/docs/javamail.pdf");
 			
 			//Attach body parts
 			emailContent.addBodyPart(textBodyPart);
-			emailContent.addBodyPart(pdfAttachment);
+			
 			
 			//Attach multipart to message
 			msg.setContent(emailContent);
