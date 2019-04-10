@@ -54,7 +54,7 @@ public class Recipe
 	
 	public String getIngredientString() {
 		String s = "";
-		for (String i : getIngredients) {
+		for (String i : getIngredients()) {
 			s += (i + "\n");
 		}
 		return s;
