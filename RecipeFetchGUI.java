@@ -136,12 +136,16 @@ public class RecipeFetchGUI extends javax.swing.JFrame {
     }//end of formatting                      
 
     private void recipeSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                   
-        /*
-        This is where the button function goes.
+        
+        Recipe r = Search.search (searchTermField.getText());
+        ingredientsList.setText(r.getIngredientString());
+        recipeNameLabel.setText(r.getName());
+      
+        Search.search(searchTermField.getText());
         
         
            
-        */
+        
     }                                                  
 
 
