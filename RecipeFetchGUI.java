@@ -64,10 +64,7 @@ public class RecipeFetchGUI extends javax.swing.JFrame {
         );
         //end formatting
 		
-        recipeNameLabel.setText("Sample Title");/*set this to the name of the recipe in
-                                                  the recipeSearchButtonActionPerformed
-                                                  function*/
-        
+
         ingredientsLabel.setText("Ingredients:");//ingredients title above box-do not change
 
         ingredientsList.setColumns(20);
