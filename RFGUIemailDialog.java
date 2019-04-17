@@ -217,7 +217,7 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
         
 		try {
 			URL url = new URL(r.getImageURL());
-			imageLabel = new JLabel(new ImageIcon(ImageIO.read(url)));
+			imageLabel.setIcon(new ImageIcon(ImageIO.read(url)));
 		} catch (Exception e) {
 			
 		}
