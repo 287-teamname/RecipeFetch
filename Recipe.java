@@ -8,15 +8,17 @@
 import java.util.ArrayList;
 import org.jsoup.nodes.*;
 import org.jsoup.select.*;
+import System.;
 
 public class Recipe
 {
     private String name; //The name of the dish
     private ArrayList<String> ingredients = new ArrayList<String>(); //the list of ingredients in the dish
     private String url;
+	private String imageURL;
 
 	// Constructor for objects of class Recipe
-    public Recipe(Document doc, String u) // Class constructor takes an ALREADY ACCESSED jsoup doc as its sole argument. Queries are not to be made through the constructor
+    public Recipe(Document doc, String u) // Class constructor takes an ALREADY ACCESSED jsoup doc as its first argument. Queries are not to be made through the constructor
     {
 		url = u;
         name = doc.title().replace(" - Allrecipes.com", ""); // assigns dish name and removes trailing website title
@@ -33,8 +35,10 @@ public class Recipe
 				//Having found the ingredients, we add each to the recipe object's list
                 ingredients.add(j.select("label").first().attr("title"));
             }
-        } 
-    }
+        }
+		
+		imageURL = pageContent.select("div.summary-background").select("div.summaryGroup").select("section.hero-photo").select("div.hero-photo_image").select("div.hero-phoot_wrap").select("a").select("img").attr("src");
+	}
 	
 	//prints the ingredients from the arraylist
 	public void printIngredients() {
@@ -63,5 +67,9 @@ public class Recipe
 			s += (i + "\n");
 		}
 		return s;
+	}
+	
+	public String getImageURL() {
+		return imageURL;
 	}
 }
