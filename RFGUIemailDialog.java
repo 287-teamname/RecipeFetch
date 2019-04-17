@@ -5,6 +5,13 @@
  * @author aemarrero
  */
 
+import java.awt.image.BufferedImage;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+
+
 //search button action function is on line 189, email button action function is on line 204(delete this comment once the functions are finalized)
 public class RFGUIemailDialog extends javax.swing.JFrame {
 	
@@ -31,6 +38,9 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
         ingredientsLabel = new javax.swing.JLabel();
         listScrollPanel = new javax.swing.JScrollPane();
         ingredientsList = new javax.swing.JTextArea();
+		imageLabel = new javax.swing.JLabel();
+		
+		
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Recipe Fetch");
@@ -205,6 +215,12 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
 
     private void sendEmailButtonActionPerformed(java.awt.event.ActionEvent evt) {
         
+		try {
+			URL url = new URL(r.getImageURL());
+			imageLabel = new JLabel(new ImageIcon(ImageIO.read(url)));
+		} catch (Exception e) {
+			
+		}
         SendMail.send(emailTextField.getText(), r.getURL());
         emailDialog.dispose();
     }
@@ -236,5 +252,6 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
     private javax.swing.JDialog emailDialog;
     private javax.swing.JButton sendEmailButton;
     private javax.swing.JButton cancelButton;
+	private javax.swing.JLabel imageLabel;
     //end of variables declaration                   
 }
