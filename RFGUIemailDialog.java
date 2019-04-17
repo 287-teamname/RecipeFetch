@@ -34,6 +34,7 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Recipe Fetch");
+        
 
         inputOutputSeperator.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -115,7 +116,7 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
                 .addComponent(searchTermField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(recipeSearchButton)
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(500, Short.MAX_VALUE))//gap from the bottom for search button and box
         );
         //end formatting
         
@@ -148,7 +149,7 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(ingredientsLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                .addComponent(listScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)//ingredients box height
                 .addContainerGap())
         );
 
@@ -165,7 +166,7 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ingredientsListPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(recipeNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(recipeNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)//ingredients box width
                         .addGap(0, 50, Short.MAX_VALUE)))
                 .addContainerGap())
         );
