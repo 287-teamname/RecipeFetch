@@ -21,7 +21,7 @@ public class Search
             image = first_result.select(".grid-card-image-container").first();
             link = image.select("a").first();
             String recipe_url = link.attr("abs:href");
-            return new Recipe(Jsoup.connect(recipe_url).get());
+            return new Recipe(Jsoup.connect(recipe_url).get(), recipe_url);
         }
         catch (IOException e) {
             System.out.println("error!");
