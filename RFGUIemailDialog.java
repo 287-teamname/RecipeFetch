@@ -149,6 +149,7 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
             .addGroup(ingredientsListPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ingredientsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                	.addComponent(imageLabel, 250, 250, Short.MAX_VALUE)
                     .addComponent(ingredientsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(listScrollPanel))
                 .addContainerGap())
@@ -157,6 +158,7 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
             ingredientsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ingredientsListPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(imageLabel, 250, 250, Short.MAX_VALUE)
                 .addComponent(ingredientsLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(listScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)//ingredients box height
