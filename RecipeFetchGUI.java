@@ -60,7 +60,7 @@ public class RecipeFetchGUI extends javax.swing.JFrame {
                 .addComponent(searchTermField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(recipeSearchButton)
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(475, Short.MAX_VALUE))
         );
         //end formatting
 		
@@ -84,7 +84,7 @@ public class RecipeFetchGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(ingredientsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ingredientsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(listScrollPanel))
+                    .addComponent(listScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))//default horizontal value for the ingredients list is here
                 .addContainerGap())
         );
         ingredientsListPanelLayout.setVerticalGroup(
@@ -93,7 +93,7 @@ public class RecipeFetchGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(ingredientsLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                .addComponent(listScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)//default vertical value for the ingredients list is here
                 .addContainerGap())
         );
 
