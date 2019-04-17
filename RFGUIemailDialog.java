@@ -7,7 +7,8 @@
 
 //search button action function is on line 189, email button action function is on line 204(delete this comment once the functions are finalized)
 public class RFGUIemailDialog extends javax.swing.JFrame {
-
+	
+	public Recipe r;
     /**
      * Creates new form RecipeFetchGUI
      */
@@ -188,7 +189,7 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
 
     private void recipeSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         
-        Recipe r = Search.search (searchTermField.getText());
+        r = Search.search (searchTermField.getText());
         ingredientsList.setText(r.getIngredientString());
         recipeNameLabel.setText(r.getName());
       
@@ -203,12 +204,11 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
 
     private void sendEmailButtonActionPerformed(java.awt.event.ActionEvent evt) {
         
-        /*email function will go here*/
+        SendMail.send(emailTextField.getText(), r.getURL());
         emailDialog.dispose();
     }
     
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//button to exit dialog without sending an email
-        
         emailDialog.dispose();
     }
 
