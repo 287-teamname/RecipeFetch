@@ -16,14 +16,15 @@ public class SendMail {
 
 	public static void send(String toEmail, String url) {
 		//authentication info
-		final String username = "teamname287@yahoo.com";
-		final String password = "Ddiwpap2dm6Dwbd";
-		String fromEmail = "teamname287";
+		final String username = "carlos.10788697@gmail.com";
+		final String password = "carlos609!";
+		String fromEmail = "carlos.10788697";
 		
 		Properties properties = new Properties();
+		properties.put("mail.smtp.host", "smtp.gmail.com");
 		properties.put("mail.smtp.auth", "true");
 		properties.put("mail.smtp.starttls.enable", "true");
-		properties.put("mail.smtp.host", "smtp.mail.yahoo.com");
+		properties.put("mail.smtp.host", "smtp.gmail.com");
 		properties.put("mail.smtp.port", "587");
 		
 		Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
@@ -36,22 +37,10 @@ public class SendMail {
 		MimeMessage msg = new MimeMessage(session);
 		try {
 			msg.setFrom(new InternetAddress(fromEmail));
-			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
 			msg.setSubject("Your Recipe from All recipes");
 			
-			Multipart emailContent = new MimeMultipart();
-			
-			//Text body part
-			MimeBodyPart textBodyPart = new MimeBodyPart();
-			textBodyPart.setText(url);
-			
-			
-			//Attach body parts
-			emailContent.addBodyPart(textBodyPart);
-			
-			
-			//Attach multipart to message
-			msg.setContent(emailContent);
+			msg.setText(url);
 			
 			Transport.send(msg);
 			System.out.println("Sent message");
