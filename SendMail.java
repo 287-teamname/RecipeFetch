@@ -16,8 +16,8 @@ public class SendMail {
 
 	public static void send(String toEmail, String url) {
 		//authentication info
-		final String username = "yourUsername@email.com";
-		final String password = "password";
+		final String username = "teamname287@yahoo.com";
+		final String password = "Ddiwpap2dm6Dwbd";
 		String fromEmail = "fromemail@yahoo.com";
 		
 		Properties properties = new Properties();
