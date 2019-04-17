@@ -23,7 +23,8 @@ public class Recipe
         name = doc.title().replace(" - Allrecipes.com", ""); // assigns dish name and removes trailing website title
         
 		//First in the scraping process, we drill down to the level of the actual page content in which we are interested
-        Element pageContent = doc.selectFirst("div.slider-container").selectFirst("div.site-content").selectFirst("div#main-content").selectFirst("div.recipe-container-outer").selectFirst("section.ar_recipe_index");
+        Element pageContent = doc.selectFirst("div.slider-container").selectFirst("div.site-content").selectFirst("div#main-content").
+							  selectFirst("div.recipe-container-outer").selectFirst("section.ar_recipe_index");
         
 		//The ingredients can be split among one or more tables in the "recipe-ingredients" section, so we iterate through all of them
         Elements ingredientLists = pageContent.selectFirst("section.recipe-ingredients").selectFirst("div#polaris-app").select("ul");
@@ -36,7 +37,7 @@ public class Recipe
             }
         }
 		
-		imageURL = pageContent.select("div.summary-background").select("div.summaryGroup").select("section.hero-photo").select("div.hero-photo_image").select("div.hero-phoot_wrap").select("a").select("img").attr("src");
+		imageURL = pageContent.getElementsByTag("img").first().attr("src");
 	}
 	
 	//prints the ingredients from the arraylist
