@@ -53,7 +53,7 @@ public class Recipe
 		return ingredients;
 	}
 	
-	public string getURL() {
+	public String getURL() {
 		return url;
 	}
 	
