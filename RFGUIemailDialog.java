@@ -203,8 +203,13 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
         r = Search.search (searchTermField.getText());
         ingredientsList.setText(r.getIngredientString());
         recipeNameLabel.setText(r.getName());
-      
-        Search.search(searchTermField.getText());
+
+		try {
+			URL url = new URL(r.getImageURL());
+			imageLabel.setIcon(new ImageIcon(ImageIO.read(url)));
+		} catch (Exception e) {
+			System.out.println("Error");
+		}
         
         //opens the email dialog box
         emailDialog.setVisible(true);
@@ -214,13 +219,6 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
     }                                                  
 
     private void sendEmailButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        
-		try {
-			URL url = new URL(r.getImageURL());
-			imageLabel.setIcon(new ImageIcon(ImageIO.read(url)));
-		} catch (Exception e) {
-			
-		}
         SendMail.send(emailTextField.getText(), r.getURL());
         emailDialog.dispose();
     }
