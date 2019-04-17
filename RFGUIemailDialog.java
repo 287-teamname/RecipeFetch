@@ -6,12 +6,12 @@
  */
 
 //search button action function is on line 189, email button action function is on line 204(delete this comment once the functions are finalized)
-public class RecipeFetchUI extends javax.swing.JFrame {
+public class RFGUIemailDialog extends javax.swing.JFrame {
 
     /**
      * Creates new form RecipeFetchGUI
      */
-    public RecipeFetchUI() {
+    public RFGUIemailDialog() {
         initComponents();
     }
                       
@@ -216,7 +216,7 @@ public class RecipeFetchUI extends javax.swing.JFrame {
         //create and display the form
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RecipeFetchUI().setVisible(true);
+                new RFGUIemailDialog().setVisible(true);
             }
         });
     }
