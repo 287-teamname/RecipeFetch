@@ -18,7 +18,7 @@ public class SendMail {
 		//authentication info
 		final String username = "teamname287@yahoo.com";
 		final String password = "Ddiwpap2dm6Dwbd";
-		String fromEmail = "fromemail@yahoo.com";
+		String fromEmail = "teamname287";
 		
 		Properties properties = new Properties();
 		properties.put("mail.smtp.auth", "true");
@@ -31,12 +31,13 @@ public class SendMail {
 				return new PasswordAuthentication(username,password);
 			}
 		});
+		
 		//Start our mail message
 		MimeMessage msg = new MimeMessage(session);
 		try {
 			msg.setFrom(new InternetAddress(fromEmail));
 			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
-			msg.setSubject("Your Recipes from All recipes");
+			msg.setSubject("Your Recipe from All recipes");
 			
 			Multipart emailContent = new MimeMultipart();
 			
@@ -57,7 +58,5 @@ public class SendMail {
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }
