@@ -13,11 +13,12 @@ public class Recipe
 {
     private String name; //The name of the dish
     private ArrayList<String> ingredients = new ArrayList<String>(); //the list of ingredients in the dish
-    
+    private String url;
 
 	// Constructor for objects of class Recipe
-    public Recipe(Document doc) // Class constructor takes an ALREADY ACCESSED jsoup doc as its sole argument. Queries are not to be made through the constructor
+    public Recipe(Document doc, String u) // Class constructor takes an ALREADY ACCESSED jsoup doc as its sole argument. Queries are not to be made through the constructor
     {
+		url = u;
         name = doc.title().replace(" - Allrecipes.com", ""); // assigns dish name and removes trailing website title
         
 		//First in the scraping process, we drill down to the level of the actual page content in which we are interested
@@ -50,6 +51,10 @@ public class Recipe
 	//accessor method for the ingredients
 	public ArrayList<String> getIngredients() {
 		return ingredients;
+	}
+	
+	public string getURL() {
+		return url;
 	}
 	
 	public String getIngredientString() {
