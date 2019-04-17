@@ -56,9 +56,6 @@ public class SendMail {
 			System.out.println("Sent message");
 		} catch (MessagingException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 	}
