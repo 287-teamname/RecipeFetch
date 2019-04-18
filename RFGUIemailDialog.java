@@ -126,15 +126,15 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
                 .addComponent(searchTermField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(recipeSearchButton)
-                .addContainerGap(500, Short.MAX_VALUE))//gap from the bottom for search button and box
+                .addContainerGap(600, Short.MAX_VALUE))//gap from the bottom for search button and box
         );
         //end formatting
         
 
         ingredientsLabel.setText("Ingredients:");//ingredients title above box-do not change
 
-        ingredientsList.setColumns(45);
-        ingredientsList.setRows(30);/*might make sense to also make this part of
+        ingredientsList.setColumns(40);
+        ingredientsList.setRows(18);/*might make sense to also make this part of
                                      recipeSearchButtonActionPerformed to have
                                      the textbox scale according to how many 
                                      ingredients are in the list*/
@@ -149,7 +149,7 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
             .addGroup(ingredientsListPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ingredientsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                	.addComponent(imageLabel, 250, 250, Short.MAX_VALUE)
+                	.addComponent(imageLabel, 500, 500, Short.MAX_VALUE)//image dimensions
                     .addComponent(ingredientsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(listScrollPanel))
                 .addContainerGap())
@@ -158,10 +158,10 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
             ingredientsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ingredientsListPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(imageLabel, 250, 250, Short.MAX_VALUE)
+                .addComponent(imageLabel, 300, 300, Short.MAX_VALUE)//image dimensions
                 .addComponent(ingredientsLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)//ingredients box height
+                .addComponent(listScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)//ingredients box height
                 .addContainerGap())
         );
 
