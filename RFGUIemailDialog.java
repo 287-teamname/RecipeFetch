@@ -11,8 +11,6 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 
-
-//search button action function is on line 189, email button action function is on line 204(delete this comment once the functions are finalized)
 public class RFGUIemailDialog extends javax.swing.JFrame {
 	
 	public Recipe r;
@@ -151,7 +149,7 @@ public class RFGUIemailDialog extends javax.swing.JFrame {
                 .addGroup(ingredientsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 	.addComponent(imageLabel, 500, 500, Short.MAX_VALUE)//image dimensions
                     .addComponent(ingredientsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(listScrollPanel))
+                    .addComponent(listScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))//default horizontal value for the ingredients list is here
                 .addContainerGap())
         );
         ingredientsListPanelLayout.setVerticalGroup(
