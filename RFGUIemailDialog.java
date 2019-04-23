@@ -4,17 +4,29 @@
  *
  * @author aemarrero
  */
-public class RecipeFetchGUI extends javax.swing.JFrame {
 
+import java.awt.image.BufferedImage;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+
+public class RFGUIemailDialog extends javax.swing.JFrame {
+	
+	public Recipe r;
     /**
      * Creates new form RecipeFetchGUI
      */
-    public RecipeFetchGUI() {
+    public RFGUIemailDialog() {
         initComponents();
     }
                       
     private void initComponents() {
 
+        emailDialog = new javax.swing.JDialog();
+        emailTextField = new javax.swing.JTextField();
+        sendEmailButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
         inputOutputSeperator = new javax.swing.JSeparator();
         searchBoxPanel = new javax.swing.JPanel();
         recipeSearchButton = new javax.swing.JButton();
@@ -24,9 +36,13 @@ public class RecipeFetchGUI extends javax.swing.JFrame {
         ingredientsLabel = new javax.swing.JLabel();
         listScrollPanel = new javax.swing.JScrollPane();
         ingredientsList = new javax.swing.JTextArea();
+		imageLabel = new javax.swing.JLabel();
+		
+		
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Recipe Fetch");
+        
 
         inputOutputSeperator.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -36,8 +52,56 @@ public class RecipeFetchGUI extends javax.swing.JFrame {
                 recipeSearchButtonActionPerformed(evt);
             }
         });
-		
-		
+        
+        emailDialog.setTitle("RecipeEmail");
+        emailDialog.setAlwaysOnTop(true);
+
+        sendEmailButton.setText("Send E-Mail");
+        sendEmailButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendEmailButtonActionPerformed(evt);
+            }
+        });
+        
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
+        //formating for email dialog
+        javax.swing.GroupLayout emailDialogLayout = new javax.swing.GroupLayout(emailDialog.getContentPane());
+        emailDialog.getContentPane().setLayout(emailDialogLayout);
+        emailDialogLayout.setHorizontalGroup(
+            emailDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(emailDialogLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(emailDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(emailDialogLayout.createSequentialGroup()
+                        .addComponent(emailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(sendEmailButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, emailDialogLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(cancelButton)))
+                .addContainerGap())
+        );
+
+        emailDialogLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cancelButton, sendEmailButton});
+
+        emailDialogLayout.setVerticalGroup(
+            emailDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(emailDialogLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(emailDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sendEmailButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cancelButton)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        //end formatting
+        
         //formatting for left panel-do not change
         javax.swing.GroupLayout searchBoxPanelLayout = new javax.swing.GroupLayout(searchBoxPanel);
         searchBoxPanel.setLayout(searchBoxPanelLayout);
@@ -60,15 +124,15 @@ public class RecipeFetchGUI extends javax.swing.JFrame {
                 .addComponent(searchTermField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(recipeSearchButton)
-                .addContainerGap(475, Short.MAX_VALUE))
+                .addContainerGap(600, Short.MAX_VALUE))//gap from the bottom for search button and box
         );
         //end formatting
-		
+        
 
         ingredientsLabel.setText("Ingredients:");//ingredients title above box-do not change
 
-        ingredientsList.setColumns(20);
-        ingredientsList.setRows(5);/*might make sense to also make this part of
+        ingredientsList.setColumns(40);
+        ingredientsList.setRows(18);/*might make sense to also make this part of
                                      recipeSearchButtonActionPerformed to have
                                      the textbox scale according to how many 
                                      ingredients are in the list*/
@@ -83,6 +147,7 @@ public class RecipeFetchGUI extends javax.swing.JFrame {
             .addGroup(ingredientsListPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ingredientsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                	.addComponent(imageLabel, 500, 500, Short.MAX_VALUE)//image dimensions
                     .addComponent(ingredientsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(listScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE))//default horizontal value for the ingredients list is here
                 .addContainerGap())
@@ -91,9 +156,10 @@ public class RecipeFetchGUI extends javax.swing.JFrame {
             ingredientsListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ingredientsListPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(imageLabel, 300, 300, Short.MAX_VALUE)//image dimensions
                 .addComponent(ingredientsLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)//default vertical value for the ingredients list is here
+                .addComponent(listScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)//ingredients box height
                 .addContainerGap())
         );
 
@@ -110,7 +176,7 @@ public class RecipeFetchGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ingredientsListPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(recipeNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(recipeNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)//ingredients box width
                         .addGap(0, 50, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -134,23 +200,38 @@ public class RecipeFetchGUI extends javax.swing.JFrame {
 
     private void recipeSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         
-        Recipe r = Search.search (searchTermField.getText());
+        r = Search.search (searchTermField.getText());
         ingredientsList.setText(r.getIngredientString());
         recipeNameLabel.setText(r.getName());
-      
-        Search.search(searchTermField.getText());
+
+		try {
+			URL url = new URL(r.getImageURL());
+			imageLabel.setIcon(new ImageIcon(ImageIO.read(url)));
+		} catch (Exception e) {
+			System.out.println("Error");
+		}
         
-        
-           
+        //opens the email dialog box
+        emailDialog.setVisible(true);
+        emailDialog.setSize(500,200);
+        emailDialog.setLocationRelativeTo(null);
         
     }                                                  
 
+    private void sendEmailButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        SendMail.send(emailTextField.getText(), r.getURL());
+        emailDialog.dispose();
+    }
+    
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//button to exit dialog without sending an email
+        emailDialog.dispose();
+    }
 
     public static void main(String args[]) {
         //create and display the form
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RecipeFetchGUI().setVisible(true);
+                new RFGUIemailDialog().setVisible(true);
             }
         });
     }
@@ -165,5 +246,10 @@ public class RecipeFetchGUI extends javax.swing.JFrame {
     private javax.swing.JButton recipeSearchButton;
     private javax.swing.JPanel searchBoxPanel;
     private javax.swing.JTextField searchTermField;
+    private javax.swing.JTextField emailTextField;
+    private javax.swing.JDialog emailDialog;
+    private javax.swing.JButton sendEmailButton;
+    private javax.swing.JButton cancelButton;
+	private javax.swing.JLabel imageLabel;
     //end of variables declaration                   
 }
